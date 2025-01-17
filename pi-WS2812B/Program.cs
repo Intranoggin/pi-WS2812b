@@ -1,28 +1,34 @@
-﻿using System.Device.Gpio;
-using System.Threading;
-// See https://aka.ms/new-console-template for more information
-Console.WriteLine("VS - Hello, World!");
+﻿using System.Device.Spi;
+using System.Drawing;
+using Iot.Device.Ws28xx;
 
-GpioController controller = new GpioController(PinNumberingScheme.Logical);
+Console.WriteLine("VS - Hello, Color!");
 
-var pin = 5;
-var lightTime = 300;
-
-controller.OpenPin(pin, PinMode.Output);
-
-try
+SpiConnectionSettings settings = new(0, 0)
 {
-    while (true)
+    ClockFrequency = 2_400_000,
+    Mode = SpiMode.Mode0,
+    DataBitLength = 8
+};
+var height = 8;
+var width = 8;
+var ledCount = height * width;
+
+using (SpiDevice spi = SpiDevice.Create(settings))
+{
+    var ledStrip = new Ws2812b(spi, ledCount);
+
+    RawPixelContainer img = ledStrip.Image;
+    for (var x = 0; x < width; x++)
     {
-        Console.WriteLine("Light on");
-        controller.Write(pin, PinValue.High);
-        Thread.Sleep(lightTime);
-        Console.WriteLine("Light off");
-        controller.Write(pin, PinValue.Low);
-        Thread.Sleep(lightTime);
+        for (var y = 0; y < height; y++)
+        {
+            //var color = new Color();
+
+            img.SetPixel(x, y, Color.RebeccaPurple);
+        }
+
+        ledStrip.Update();
+        Thread.Sleep(25);
     }
-}
-finally
-{
-    controller.ClosePin(pin);
 }
