@@ -10,8 +10,8 @@ SpiConnectionSettings settings = new(0, 0)
     Mode = SpiMode.Mode0,
     DataBitLength = 8    
 };
-var height = 8;
-var width = 8;
+var height = 1;
+var width = 64;
 var ledCount = height * width;
 var r = 0;
 var g = 0;
