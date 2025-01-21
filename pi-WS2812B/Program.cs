@@ -43,6 +43,8 @@ using (SpiDevice spi = SpiDevice.Create(settings))
         }
         Console.WriteLine("Update");
         ledStrip.Update();
+        Console.WriteLine("Sleep");
         Thread.Sleep(1000);
+        Console.WriteLine("Continue");
     }
 }
