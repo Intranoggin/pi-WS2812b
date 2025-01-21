@@ -35,13 +35,14 @@ using (SpiDevice spi = SpiDevice.Create(settings))
         {
             for (var y = 0; y < height; y++)
             {
+                Console.WriteLine("X: " + x + " Y: " + y);
                 //var color = new Color();
                 img.SetPixel(x, y, Color.RebeccaPurple);
-
             }
 
-            ledStrip.Update();
         }
+        Console.WriteLine("Update");
+        ledStrip.Update();
         Thread.Sleep(1000);
     }
 }
