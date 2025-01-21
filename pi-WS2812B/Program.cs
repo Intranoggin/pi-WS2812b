@@ -10,8 +10,8 @@ SpiConnectionSettings settings = new(0, 0)
     Mode = SpiMode.Mode0,
     DataBitLength = 8    
 };
-var height = 1;
-var width = 64;
+var height = 8;
+var width = 32;
 var ledCount = height * width;
 //var r = 0;
 //var g = 0;
@@ -25,16 +25,23 @@ using (SpiDevice spi = SpiDevice.Create(settings))
     
     Console.WriteLine("Width: " + img.Width);
     Console.WriteLine("Height: " + img.Height);
-    for (var x = 0; x < width; x++)
-    {
-        for (var y = 0; y < height; y++)
-        {            
-            //var color = new Color();
-            img.SetPixel(x, y, Color.RebeccaPurple);
-          
-        }
 
-        ledStrip.Update();
-        Thread.Sleep(25);
+    for (int count = 0; count<500;count++)
+    {
+        var color = count % 2 == 0 ? Color.RebeccaPurple : Color.Aqua;
+        Console.WriteLine("Count: " + count);
+        Console.WriteLine("Color: " + color.Name);
+        for (var x = 0; x < width; x++)
+        {
+            for (var y = 0; y < height; y++)
+            {
+                //var color = new Color();
+                img.SetPixel(x, y, Color.RebeccaPurple);
+
+            }
+
+            ledStrip.Update();
+            Thread.Sleep(25);
+        }
     }
 }
