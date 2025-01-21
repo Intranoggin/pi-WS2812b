@@ -1,0 +1,3 @@
+git pull
+dotnet msbuild pi-WS2812B.sln -t:build -restore -p:RestorePackagesConfig=true
+dotnet ./pi-WS2812B/bin/Debug/net8.0/pi-WS2812B.dll
