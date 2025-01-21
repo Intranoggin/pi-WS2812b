@@ -13,13 +13,13 @@ SpiConnectionSettings settings = new(0, 0)
 var height = 1;
 var width = 64;
 var ledCount = height * width;
-var r = 0;
-var g = 0;
-var b = 0;
+//var r = 0;
+//var g = 0;
+//var b = 0;
 
 using (SpiDevice spi = SpiDevice.Create(settings))
 {
-    var ledStrip = new Ws2812b(spi, ledCount);
+    var ledStrip = new Ws2812b(spi, width, height);
 
     RawPixelContainer img = ledStrip.Image;
     
@@ -31,6 +31,7 @@ using (SpiDevice spi = SpiDevice.Create(settings))
         {            
             //var color = new Color();
             img.SetPixel(x, y, Color.RebeccaPurple);
+          
         }
 
         ledStrip.Update();
