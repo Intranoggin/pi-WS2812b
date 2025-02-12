@@ -6,7 +6,7 @@ Console.WriteLine("VS - Hello, Color!");
 
 SpiConnectionSettings settings = new(0, 0)
 {
-    ClockFrequency = 2_400_000,
+    ClockFrequency = 250,//2_400_000,
     Mode = SpiMode.Mode0,
     DataBitLength = 8    
 };
@@ -43,8 +43,8 @@ using (SpiDevice spi = SpiDevice.Create(settings))
         }
         Console.WriteLine("Update");
         ledStrip.Update();
-        //Console.WriteLine("Sleep");
-        //Thread.Sleep(1000);
+        Console.WriteLine("Sleep");
+        Thread.Sleep(1000);
         Console.WriteLine("Continue");
     }
 }
