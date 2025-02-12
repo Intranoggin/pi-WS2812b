@@ -6,7 +6,7 @@ Console.WriteLine("VS - Hello, Color!");
 
 SpiConnectionSettings settings = new(0, 0)
 {
-    ClockFrequency = 2_400_000,
+    ClockFrequency = 2400000,
     Mode = SpiMode.Mode0,
     DataBitLength = 8    
 };
