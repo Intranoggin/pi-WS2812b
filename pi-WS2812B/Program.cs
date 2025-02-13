@@ -28,7 +28,7 @@ using (SpiDevice spi = SpiDevice.Create(settings))
 
     for (int count = 0; count<500;count++)
     {
-        var color = count % 2 == 0 ? Color.RebeccaPurple : Color.Aqua;
+        var color = count % 2 == 0 ? Color.DarkSlateBlue : Color.DarkRed;
         Console.WriteLine("Count: " + count);
         Console.WriteLine("Color: " + color.Name);
         for (var x = 0; x < width; x++)
@@ -37,7 +37,7 @@ using (SpiDevice spi = SpiDevice.Create(settings))
             {
                 Console.WriteLine("X: " + x + " Y: " + y);
                 //var color = new Color();
-                img.SetPixel(x, y, Color.RebeccaPurple);
+                img.SetPixel(x, y, color);
             }
 
         }
