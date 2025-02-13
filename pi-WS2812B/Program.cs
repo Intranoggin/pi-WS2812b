@@ -26,21 +26,22 @@ using (SpiDevice spi = SpiDevice.Create(settings))
     Console.WriteLine("Width: " + img.Width);
     Console.WriteLine("Height: " + img.Height);
 
-    for (int count = 0; count<500;count++)
+    for (int count = 0; count<25;count++)
     {
         var color = count % 2 == 0 ? Color.DarkSlateBlue : Color.DarkRed;
         Console.WriteLine("Count: " + count);
-        //Console.WriteLine("Color: " + color.Name);
-        for (var x = 0; x < width; x++)
-        {
-            for (var y = 0; y < height; y++)
-            {
-                //Console.WriteLine("X: " + x + " Y: " + y);
-                //var color = new Color();
-                img.SetPixel(x, y, Color.DarkRed);
-            }
+        Console.WriteLine("Color: " + color.Name);
+        img.Clear(color);
+        // for (var x = 0; x < width; x++)
+        // {
+        //     for (var y = 0; y < height; y++)
+        //     {
+        //         //Console.WriteLine("X: " + x + " Y: " + y);
+        //         //var color = new Color();
+        //         img.SetPixel(x, y, color);
+        //     }
 
-        }
+        // }
         Console.WriteLine("Update");
         ledStrip.Update();
         Console.WriteLine("Sleep");
