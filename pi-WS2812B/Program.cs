@@ -37,7 +37,7 @@ using (SpiDevice spi = SpiDevice.Create(settings))
             {
                 Console.WriteLine("X: " + x + " Y: " + y);
                 //var color = new Color();
-                img.SetPixel(x, y, color);
+                img.SetPixel(x, y, Color.DarkRed);
             }
 
         }
