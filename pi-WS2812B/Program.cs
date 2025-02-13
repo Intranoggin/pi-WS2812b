@@ -30,12 +30,12 @@ using (SpiDevice spi = SpiDevice.Create(settings))
     {
         var color = count % 2 == 0 ? Color.DarkSlateBlue : Color.DarkRed;
         Console.WriteLine("Count: " + count);
-        Console.WriteLine("Color: " + color.Name);
+        //Console.WriteLine("Color: " + color.Name);
         for (var x = 0; x < width; x++)
         {
             for (var y = 0; y < height; y++)
             {
-                Console.WriteLine("X: " + x + " Y: " + y);
+                //Console.WriteLine("X: " + x + " Y: " + y);
                 //var color = new Color();
                 img.SetPixel(x, y, Color.DarkRed);
             }
